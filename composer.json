@@ -1,0 +1,16 @@
+{
+  "name": "elgentos/magento2-hyva-cro-semi-sticky-header",
+  "description": "Changes the Hyvä header to a semi-sticky header (dissapears down and reappears up)",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Elgentos\\HyvaCROSemiStickyHeader\\": ""
+    }
+  }
+}
