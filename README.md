@@ -1,6 +1,6 @@
 # Elgentos_HyvaCROSemiStickyHeader
 
-Changes the Hyvä header to a semi-sticky header (dissapears down and reappears up)
+Changes the Hyvä header to a semi-sticky header (disappears down and reappears up).
 
 Win ratio for the A/B test for this is 44.44%, see [Evidoo.io best practice 139](https://www.evidoo.io/best-practices/139/).
 
