@@ -70,7 +70,7 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
     }
 </script>
 <div x-data="{ scrollAtTop: true, scrolledDown: false, lastScrollY: 0 }"
-     @scroll.window="scrolledDown = (window.pageYOffset > lastScrollY); lastScrollY = window.pageYOffset; scrollAtTop = (window.pageYOffset > 0) ? false : true">
+     @scroll.debounce.30ms.window="scrolledDown = (window.pageYOffset > lastScrollY); lastScrollY = window.pageYOffset; scrollAtTop = (window.pageYOffset > 0) ? false : true">
     <div class="w-full transition-transform duration-300"
          :class="{
             'theme-bg-grey6 fixed top-0 z-20 shadow-md': !scrollAtTop,
