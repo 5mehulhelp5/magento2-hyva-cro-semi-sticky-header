@@ -8,9 +8,10 @@
  */
 -->
 <page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <referenceBlock name="header-content">
-        <action method="setTemplate">
-            <argument name="template" xsi:type="string">Elgentos_HyvaCROSemiStickyHeader::html/header.phtml</argument>
-        </action>
-    </referenceBlock>
+    <body>
+        <block name="sticky-header" template="Elgentos_HyvaCROSemiStickyHeader::html/header-sticky.phtml" />
+
+        <move element="sticky-header" destination="header.container" before="-"/>
+        <move element="header-content" destination="sticky-header" />
+    </body>
 </page>
