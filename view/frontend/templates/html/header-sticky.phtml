@@ -1,0 +1,55 @@
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2020-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+
+declare(strict_types=1);
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\HyvaCsp;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Escaper $escaper */
+/** @var Template $block */
+/** @var ViewModelRegistry $viewModels */
+/** @var HyvaCsp $hyvaCsp */
+
+?>
+<div x-data="initStickyHeader"
+     @scroll.debounce.30ms.window="scrollEvent"
+     class="w-full transition-transform duration-300 min-h-[60px]"
+     :class="stickyHeaderClasses"
+>
+    <?= $block->getChildHtml() ?>
+</div>
+<script>
+    function initStickyHeader() {
+        let lastScrollY = 0;
+
+        return {
+            scrollAtTop: true,
+            scrolledDown: false,
+
+            scrollEvent() {
+                this.scrolledDown = (window.pageYOffset > lastScrollY);
+                lastScrollY = window.pageYOffset;
+
+                this.scrollAtTop = (window.pageYOffset <= 0);
+            },
+
+            stickyHeaderClasses() {
+                return {
+                    'theme-bg-grey6 sticky top-0 z-20 shadow-md': !this.scrollAtTop,
+                    '-translate-y-full': this.scrolledDown && !this.scrollAtTop
+                }
+            }
+        }
+    }
+
+    window.addEventListener('alpine:init', () => Alpine.data('initStickyHeader', initStickyHeader), {once: true})
+</script>
+<?php $hyvaCsp->registerInlineScript() ?>
